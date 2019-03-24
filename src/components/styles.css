@@ -1,0 +1,93 @@
+.App {
+  display: grid;
+  padding: 1em;
+  grid-template-areas:
+    'controls gamestate log';
+}
+
+.GameState {
+  grid-area: gamestate;
+}
+
+.Controls {
+  grid-area: controls;
+}
+
+.Weights {
+  font-size: .7em;
+}
+
+.GameLog {
+  grid-area: log;
+  font-size: .7em;
+}
+
+.GameStats table {
+  border-collapse: collapse;
+}
+
+.GameStats td {
+  padding: 0 .3em;
+  border: 1px solid black;
+}
+
+.InningLog {
+  border: 1px solid black;
+  margin: .5em;
+  padding: .5em;
+}
+
+.GameLog p {
+  margin: 0;
+}
+
+.Away {
+  color: blue
+}
+
+.Home {
+  color: red;
+}
+
+.Active {
+  color: white;
+  background-color: #444;
+}
+
+.Bases {
+  stroke: black;
+  fill: none;
+}
+
+.Bases > rect {
+  fill: none;
+}
+
+.Bases > rect.HasRunner {
+  fill: currentColor;
+}
+
+button {
+  padding: 1em;
+  margin: .5em;
+}
+
+input[type='number'] {
+  width: 5em;
+}
+
+select {
+  margin: .5em;
+}
+
+.ScoreBoard td {
+  margin: 1em;
+  padding: .2em;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.ScoreBoard th {
+  padding: .4em;
+}
+
