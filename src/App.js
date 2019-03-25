@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import {
   Analysis,
@@ -12,8 +12,7 @@ import {
 } from './components'
 import store from './store'
 
-
-export default class App extends React.Component {
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -39,3 +38,5 @@ export default class App extends React.Component {
     )
   }
 }
+
+export default App;
