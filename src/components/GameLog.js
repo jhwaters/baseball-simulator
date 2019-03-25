@@ -20,20 +20,18 @@ const GameLog = props => {
   logs.reverse()
   return (
     <div className="GameLog">
-      <div>
-        {logs.map((l,i) => {
-          return (
-            <div key={i} className="InningLog">
-              <p style={{fontWeight: 'bold'}}>{l.label}</p>
-              {l.log.map((x,j) => {
-                return (
-                  <p key={j}>{x}</p>
-                )
-              })}
-            </div>
-          )
-        })}
-      </div>
+      {logs.map((l,i) => {
+        return (
+          <div key={i} className="InningLog">
+            <p style={{fontWeight: 'bold'}}>{l.label}</p>
+            {l.log.map((x,j) => {
+              return (
+                <p key={j}>{x}</p>
+              )
+            })}
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -15,10 +15,10 @@ const outs = t => {
     + (t.doubleplays || 0)
   )
 }
-const ab = t => hits(t) + walks(t) + outs(t) + err(t)
-const avg = t => round(hits(t) / (ab(t)-walks(t)), 3)
-const obp = t => round((hits(t)+walks(t)) / ab(t), 3)
-const slug = t => round(tb(t) / (ab(t)-walks(t)), 3)
+const ab = t => hits(t) + outs(t) + err(t)
+const avg = t => round(hits(t) / ab(t), 3)
+const obp = t => round((hits(t)+walks(t)) / (ab(t)+walks(t)), 3)
+const slug = t => round(tb(t) / ab(t), 3)
 const ops = t => round(obp(t) + slug(t), 3)
 
 const GameStats = props => {
@@ -26,6 +26,7 @@ const GameStats = props => {
   const away = props.stats.away.total
 
   const table = [
+    ['At Bats', ({team}) => ab(team)],
     ['Hits', ({team}) => hits(team)],
     ['Walks', ({team}) => team.bbs],
     ['Strikeouts', ({team}) => team.strikeouts],

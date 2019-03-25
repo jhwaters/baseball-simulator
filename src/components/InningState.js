@@ -15,6 +15,10 @@ const InningState = props => {
           <th>Outs:</th>
           <td>{props.outs}</td>
         </tr>
+        <tr>
+          <th>Last At Bat:</th>
+          <td>{props.lastAB ? props.lastAB : '---'}</td>
+        </tr>
       </tbody>
     </table>
     </div>
@@ -23,7 +27,19 @@ const InningState = props => {
 
 export default connect(
   state => {
-    const {batting, outs} = state.gameState
-    return {batting, outs}
+    const {batting, outs, inning} = state.gameState
+    const inningLog = state.log[batting][inning] || []
+    let lastInningLog
+    if (batting === 'home') {
+      lastInningLog = state.log.away[inning]
+    } else if (inning > 1) {
+      lastInningLog = state.log.home[inning-1]
+    }
+    const lastAB = inningLog.length
+      ? inningLog[inningLog.length-1]
+      : lastInningLog 
+        ? lastInningLog[lastInningLog.length-1] + ` (end of ${batting === 'home' ? 'half' : ''} inning)` 
+        : '---'
+    return {batting, outs, lastAB}
   }
 )(InningState)

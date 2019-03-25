@@ -14,20 +14,20 @@ const ScoreBoard = props => {
         <thead>
           <tr>
             <th></th>
-            {props.header.map(i => <th key={i}>{i}</th>)}
             <th>Total</th>
+            {props.header.map(i => <th key={i}>{i}</th>)}
           </tr>
         </thead>
         <tbody>
           <tr>
             <th className="Away">Visitor</th>
-            {props.away.map((runs, i) => <td key={i} className={isActive('away', i+1)}>{runs}</td>)}
             <th>{props.awayTotal || 0}</th>
+            {props.away.map((runs, i) => <td key={i} className={isActive('away', i+1)}>{runs}</td>)}
           </tr>
           <tr>
             <th className="Home">Home</th>
-            {props.home.map((runs, i) => <td key={i} className={isActive('home', i+1)}>{runs}</td>)}
             <th>{props.homeTotal || 0}</th>
+            {props.home.map((runs, i) => <td key={i} className={isActive('home', i+1)}>{runs}</td>)}
           </tr>
         </tbody>
       </table>

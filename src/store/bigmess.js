@@ -1,7 +1,7 @@
 import times from 'lodash/times'
 
 export function updateGameState(old, updated) {
-  return Object.assign({}, old, updated)
+  return {...old, ...updated}
 }
 
 export function updateStats(old, updates) {
@@ -50,8 +50,6 @@ export function nextInning(state) {
   }
 }
 
-
-
 export function buildWeightedArray(weights) {
   const result = []
   for (const k in weights) {
@@ -59,7 +57,6 @@ export function buildWeightedArray(weights) {
   }
   return result
 }
-
 
 function applyUpdates(state, updates={}) {
   const {stats={}, log} = updates
@@ -124,6 +121,7 @@ function applyFunction(state, f) {
 
 function advanceInning(state) {
   let {batting, inning} = state.gameState
+
   if (batting === 'away') {
     batting = 'home'
   } else if (batting === 'home') {
@@ -144,12 +142,57 @@ function advanceInning(state) {
   }
 }
 
+function updateCounter(old={}, updates={}) {
+  let result = {...old}
+  for (const k in updates) {
+    result[k] = (result[k] || 0) + updates[k]
+  }
+  return result
+}
+
+export function updateData(data, {runs=0, innings=0, runCounts={}, per9={}}) {
+  return {
+    ...data,
+    innings: data.innings + innings,
+    runs: data.runs + runs,
+    runCounts: updateCounter(data.runCounts, runCounts),
+    per9: updateCounter(data.per9, per9)
+  }
+}
+
+let in9 = 0
+let inningCount = 9
+
+function updateDataFromInning(state) {
+  const runs = state.stats[state.gameState.batting][state.gameState.inning].runs || 0
+  in9 += runs
+  inningCount -= 1
+  let per9
+  if (inningCount === 0) {
+    per9 = {[in9]: 1}
+    inningCount = 9
+    in9 = 0
+  }
+  return {
+    ...state,
+    data: updateData(state.data, {runs, innings: 1, runCounts: {[runs]: 1}, per9})
+  }
+}
+
 export function applyAndCheck(state, f) {
-  if (!state.gameState.winner) {
+  if (!state.locked && !state.gameState.winner) {
     let result = applyFunction(state, f)
+    if (result.gameState.outs >= 3 && (
+      // don't use home innings after 8th
+      (state.gameState.inning < 9) || (state.gameState.batting === 'away')
+    )) {
+      result = updateDataFromInning(result)
+    }
     if (result.gameState.winner) {
       console.log('end of game; ' + result.gameState.winner + ' wins')
-      result.autosimulate = {...result.autosimulate, until: false}
+      if (result.autosimulate.until === 'inning' || result.autosimulate.until === 'game') {
+        result.autosimulate = {...result.autosimulate, until: false}
+      }
       return result
     }
     if (checkForInning(result.gameState)) {

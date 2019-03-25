@@ -1,25 +1,69 @@
 .App {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
   display: grid;
-  padding: 1em;
   grid-template-areas:
-    'controls gamestate log';
+    'log simulation'
+    'log controls'
+    'log extra';
+  grid-template-columns: 16em auto;
 }
 
-.GameState {
-  grid-area: gamestate;
+.App > div {
+  margin: 1em;
 }
 
-.Controls {
+.controls {
   grid-area: controls;
+  display: flex;
+  justify-content: flex-start;
+  flex-basis: 1fr;
+}
+.simulation {
+  grid-area: simulation;
+  display: flex;
+  justify-content: flex-start;
+}
+.log {
+  grid-area: log;
 }
 
 .Weights {
   font-size: .7em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-grow: 0;
 }
 
-.GameLog {
-  grid-area: log;
-  font-size: .7em;
+.Weights table {
+  border-collapse: collapse;
+}
+
+.Weights input {
+  font-size: 1em;
+  padding: 0;
+}
+
+.Analysis {
+  width: 25em;
+  margin: 0 1em;
+  font-size: .8em;
+}
+
+.Analysis > span {
+  font-weight: bold;
+}
+
+.Histogram {
+  width: 25em;
+}
+
+.GameStats {
+  font-size: .75em;
+  width: 18em;
 }
 
 .GameStats table {
@@ -29,16 +73,66 @@
 .GameStats td {
   padding: 0 .3em;
   border: 1px solid black;
+  width: 4em;
+}
+
+.GameStats td:first-of-type {
+  width: auto;
+}
+
+.GameState {
+  margin: 0 1em;
+  display: grid;
+  grid-template-areas:
+    'scoreboard scoreboard'
+    'bases info';
+}
+
+.ScoreBoard {
+  grid-area: scoreboard;
+}
+
+.ScoreBoard td {
+  margin: 1em;
+  padding: .2em;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.ScoreBoard th {
+  padding: .4em;
+}
+
+.InningState {
+  width: 20em;
+  grid-area: info;
+}
+
+.InningState th {
+  text-align: right;
+}
+
+.BaseRunners {
+  grid-area: bases;
+  margin:  1em 1em 0 1em;
+}
+
+.GameLog {
+  font-size: .7em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100%;
+}
+
+.GameLog p {
+  margin: 0;
 }
 
 .InningLog {
   border: 1px solid black;
   margin: .5em;
   padding: .5em;
-}
-
-.GameLog p {
-  margin: 0;
 }
 
 .Away {
@@ -68,7 +162,7 @@
 }
 
 button {
-  padding: 1em;
+  padding: .5em;
   margin: .5em;
 }
 
@@ -80,14 +174,6 @@ select {
   margin: .5em;
 }
 
-.ScoreBoard td {
-  margin: 1em;
-  padding: .2em;
-  border: 1px solid black;
-  text-align: center;
+label {
+  font-size: .7em;
 }
-
-.ScoreBoard th {
-  padding: .4em;
-}
-

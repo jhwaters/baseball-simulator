@@ -9,12 +9,28 @@ export const OUT_AT_FIRST = 'OUT_AT_FIRST'
 export const FOUL_OUT = 'FOUL_OUT'
 export const FLY_OUT = 'FLY_OUT'
 export const DOUBLE_PLAY = 'DOUBLE_PLAY'
+
+export const MAKE_PLAY = 'MAKE_PLAY'
+export const UPDATE_DATA = 'UPDATE_DATA'
 export const DECLARE_WINNER = 'DECLARE_WINNER'
 export const UPDATE_WEIGHTS = 'UPDATE_WEIGHTS'
 export const SIMULATE_UNTIL = 'SIMULATE_UNTIL'
 export const STOP_SIMULATION = 'STOP_SIMULATION'
 export const SET_SIMULATION_DELAY = 'SET_SIMULATION_DELAY'
 export const RESET_GAME = 'RESET_GAME'
+export const RESET_STATISTICS = 'RESET_STATISTICS'
+export const LOCK_STATE = 'LOCK_STATE'
+export const UNLOCK_STATE = 'UNLOCK_STATE'
+
+export const makePlay = play => ({
+  type: MAKE_PLAY,
+  payload: play
+})
+
+export const updateData = data => ({
+  type: UPDATE_DATA,
+  payload: data
+})
 
 export const updateWeights = weights => ({
   type: UPDATE_WEIGHTS,
@@ -37,4 +53,16 @@ export const setSimulationDelay = delay => ({
 
 export const resetGame = () => ({
   type: RESET_GAME
+})
+
+export const resetStatistics = () => ({
+  type: RESET_STATISTICS
+})
+
+export const lockState = () => ({
+  type: LOCK_STATE
+})
+
+export const unlockState = () => ({
+  type: UNLOCK_STATE
 })

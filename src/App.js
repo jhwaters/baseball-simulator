@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import {
+  Analysis,
   BaseRunners,
   GameLog,
   GameSimulator,
@@ -17,17 +18,22 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <div className="GameState">
-            <ScoreBoard />
-            <InningState />
-            <BaseRunners />
-            <GameStats />
-          </div>
-          <div className="Controls">
+          <div className="controls">
             <GameSimulator />
+            <Analysis />
             <Weights />
           </div>
-          <GameLog />
+          <div className="simulation">
+            <GameStats/>
+            <div className="GameState">
+              <ScoreBoard />
+              <BaseRunners />
+              <InningState />
+            </div>
+          </div>
+          <div className="log">
+            <GameLog />
+          </div>
         </div>
       </Provider>
     )

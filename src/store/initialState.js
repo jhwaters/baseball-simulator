@@ -20,8 +20,8 @@ const log = {
   home: {},
 }
 const options = {
-  scoreFromSecondOnSingle: true,
   scoreFromThirdOnFlyOut: true,
+  scoreFromSecondOnSingle: true,
   scoreFromFirstOnDouble: false,
   firstToThirdOnSingle: false,
 }
@@ -41,7 +41,12 @@ const weights = {
 const weightedArray = buildWeightedArray(weights)
 const autosimulate = {
   until: false,
-  delay: 10,
+  delay: 300,
+}
+const data = {
+  runs: 0,
+  innings: 0,
+  runCounts: {},
 }
 
 const initialState = {
@@ -52,6 +57,7 @@ const initialState = {
   weights,
   weightedArray,
   autosimulate,
+  data,
 }
 
 export default initialState

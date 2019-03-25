@@ -1,17 +1,52 @@
+import {
+  SINGLE,
+  DOUBLE,
+  TRIPLE,
+  HOME_RUN,
+  BASE_ON_BALLS,
+  BASE_ON_ERROR,
+  STRIKE_OUT,
+  OUT_AT_FIRST,
+  FOUL_OUT,
+  FLY_OUT,
+  DOUBLE_PLAY,
+} from '../actions'
+
+export function getFunction(type) {
+  switch(type) {
+    case SINGLE: return single
+    case DOUBLE: return double
+    case TRIPLE: return triple
+    case HOME_RUN: return homerun
+    case BASE_ON_BALLS: return baseonballs
+    case BASE_ON_ERROR: return baseonerror
+    case STRIKE_OUT: return strikeout
+    case OUT_AT_FIRST: return outatfirst
+    case FOUL_OUT: return foulout
+    case FLY_OUT: return flyout
+    case DOUBLE_PLAY: return doubleplay
+    default: return () => null
+  }
+}
+
 export function single(state, options) {
   let first = true, second = false, third = false, runs = 0
   if (state.third) {
     runs += 1
   }
   if (state.second) {
-    if (options.scoreFromSecondOnSingle) {
+    if (options.scoreFromSecondOnSingle || options.firstToThirdOnSingle) {
       runs += 1
     } else {
       third = true
     }
   }
   if (state.first) {
-    second = true
+    if (options.firstToThirdOnSingle) {
+      third = true
+    } else {
+      second = true
+    }
   }
   return {
     state: {first, second, third}, 
@@ -125,12 +160,14 @@ export function foulout(state) {
   }
 }
 
-export function flyout(state) {
+export function flyout(state, options) {
   let runs = 0
   let {first, second, third} = state
-  if (third && state.outs < 2) {
-    runs += 1
-    third = false
+  if (options.scoreFromThirdOnFlyOut) {
+    if (third && state.outs < 2) {
+      runs += 1
+      third = false
+    }
   }
   let stats = {runs, flyouts: 1}
   if (runs) {

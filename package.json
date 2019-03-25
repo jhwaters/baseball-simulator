@@ -10,7 +10,11 @@
     "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.5",
-    "redux": "^4.0.0"
+    "react-vega": "^4.0.2",
+    "react-vega-lite": "^2.0.2",
+    "redux": "^4.0.0",
+    "vega-lib": "^4.4.0",
+    "vega-lite": "^2.0.0"
   },
   "scripts": {
     "predeploy": "npm run build",

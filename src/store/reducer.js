@@ -1,40 +1,25 @@
 import {
-  SINGLE,
-  DOUBLE,
-  TRIPLE,
-  HOME_RUN,
-  BASE_ON_BALLS,
-  BASE_ON_ERROR,
-  STRIKE_OUT,
-  OUT_AT_FIRST,
-  FOUL_OUT,
-  FLY_OUT,
-  DOUBLE_PLAY,
+  MAKE_PLAY,
+  UPDATE_DATA,
   DECLARE_WINNER,
   RESET_GAME,
+  RESET_STATISTICS,
   UPDATE_WEIGHTS,
   SIMULATE_UNTIL,
   STOP_SIMULATION,
   SET_SIMULATION_DELAY,
+  LOCK_STATE,
+  UNLOCK_STATE,
 } from '../actions'
 
 import {
-  single,
-  double,
-  triple,
-  homerun,
-  baseonballs,
-  baseonerror,
-  strikeout,
-  flyout,
-  foulout,
-  outatfirst,
-  doubleplay,
+  getFunction
 } from './gameactions'
 
 import {
   buildWeightedArray,
   applyAndCheck,
+  updateData,
 } from './bigmess'
 
 import initialState from './initialState'
@@ -42,30 +27,25 @@ import initialState from './initialState'
 
 function reducer(state=initialState, action) {
   switch(action.type) {
-    case SINGLE: return applyAndCheck(state, single, 'single')
-    case DOUBLE: return applyAndCheck(state, double, 'double')
-    case TRIPLE: return applyAndCheck(state, triple, 'triple')
-    case HOME_RUN: return applyAndCheck(state, homerun, 'home run')
-    case BASE_ON_BALLS: return applyAndCheck(state, baseonballs, 'base on balls')
-    case BASE_ON_ERROR: return applyAndCheck(state, baseonerror, 'base on error')
-    case STRIKE_OUT: return applyAndCheck(state, strikeout, 'strike out')
-    case OUT_AT_FIRST: return applyAndCheck(state, outatfirst, 'out at first')
-    case FOUL_OUT: return applyAndCheck(state, foulout, 'foul out')
-    case FLY_OUT: return applyAndCheck(state, flyout, 'fly out')
-    case DOUBLE_PLAY: return applyAndCheck(state, doubleplay, 'double play')
+    case MAKE_PLAY: return applyAndCheck(state, getFunction(action.payload))
     case DECLARE_WINNER: return {...state, gameState: {...state.gameState, winner: action.payload}}
-    case RESET_GAME: return {
-      ...state,
-      gameState: initialState.gameState,
-      stats: initialState.stats,
-      log: initialState.log,
-      autosimulate: {...state.autosimulate, until: false},
-    }
-    case UPDATE_WEIGHTS: return {
-      ...state, 
-      weights: action.payload, 
-      weightedArray: buildWeightedArray(action.payload)
-    }
+    case RESET_STATISTICS: return {...state, data: {...initialState.data}}
+    case UNLOCK_STATE: return {...state, locked: false}
+    case LOCK_STATE: return {...state, locked: true}
+    case UPDATE_DATA: return {...state, data: updateData(state.data, action.payload)}
+    case RESET_GAME: 
+      return {
+        ...state,
+        gameState: initialState.gameState,
+        stats: initialState.stats,
+        log: initialState.log,
+      }
+    case UPDATE_WEIGHTS:
+      return {
+        ...state, 
+        weights: action.payload, 
+        weightedArray: buildWeightedArray(action.payload)
+      }
     case STOP_SIMULATION:
       return {...state, autosimulate: {...state.autosimulate, until: false}}
     case SIMULATE_UNTIL:
