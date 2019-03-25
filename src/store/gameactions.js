@@ -29,6 +29,9 @@ export function getFunction(type) {
   }
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
 export function single(state, options) {
   let first = true, second = false, third = false, runs = 0
   if (state.third) {

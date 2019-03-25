@@ -1,7 +1,6 @@
 import {
   MAKE_PLAY,
   UPDATE_DATA,
-  DECLARE_WINNER,
   RESET_GAME,
   RESET_STATISTICS,
   UPDATE_WEIGHTS,
@@ -28,8 +27,7 @@ import initialState from './initialState'
 function reducer(state=initialState, action) {
   switch(action.type) {
     case MAKE_PLAY: return applyAndCheck(state, getFunction(action.payload))
-    case DECLARE_WINNER: return {...state, gameState: {...state.gameState, winner: action.payload}}
-    case RESET_STATISTICS: return {...state, data: {...initialState.data}}
+    case RESET_STATISTICS: return {...state, data: {...initialState.data}, current9: {...initialState.current9}}
     case UNLOCK_STATE: return {...state, locked: false}
     case LOCK_STATE: return {...state, locked: true}
     case UPDATE_DATA: return {...state, data: updateData(state.data, action.payload)}

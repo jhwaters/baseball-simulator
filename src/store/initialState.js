@@ -48,7 +48,6 @@ const data = {
   innings: 0,
   runCounts: {},
 }
-
 const initialState = {
   gameState,
   stats,
@@ -58,6 +57,7 @@ const initialState = {
   weightedArray,
   autosimulate,
   data,
+  current9: {innings: 0, runs: 0}
 }
 
 export default initialState

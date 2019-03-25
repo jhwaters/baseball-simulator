@@ -160,22 +160,20 @@ export function updateData(data, {runs=0, innings=0, runCounts={}, per9={}}) {
   }
 }
 
-let in9 = 0
-let inningCount = 9
-
 function updateDataFromInning(state) {
   const runs = state.stats[state.gameState.batting][state.gameState.inning].runs || 0
-  in9 += runs
-  inningCount -= 1
+  let current9 = {...state.current9}
   let per9
-  if (inningCount === 0) {
-    per9 = {[in9]: 1}
-    inningCount = 9
-    in9 = 0
+  current9.innings += 1
+  current9.runs += runs
+  if (current9.innings === 9) {
+    per9 = {[current9.runs]: 1}
+    current9 = {innings: 0, runs: 0}
   }
   return {
     ...state,
-    data: updateData(state.data, {runs, innings: 1, runCounts: {[runs]: 1}, per9})
+    data: updateData(state.data, {runs, innings: 1, runCounts: {[runs]: 1}, per9}),
+    current9
   }
 }
 
