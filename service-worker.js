@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/baseball-simulator/precache-manifest.f9ce27c07d28861f8b4756df855c44cd.js"
+  "/baseball-simulator/precache-manifest.09b1435a8b38705e4304942cb3338af2.js"
 );
 
 workbox.clientsClaim();
