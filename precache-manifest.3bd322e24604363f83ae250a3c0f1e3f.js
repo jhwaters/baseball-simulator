@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "de4cf8fff03097ba3ce3",
+    "revision": "dfb8b374c5e3350c96e5",
     "url": "/baseball-simulator/static/css/main.285b2a10.chunk.css"
   },
   {
-    "revision": "de4cf8fff03097ba3ce3",
-    "url": "/baseball-simulator/static/js/main.bfd0511c.chunk.js"
+    "revision": "dfb8b374c5e3350c96e5",
+    "url": "/baseball-simulator/static/js/main.742c7c30.chunk.js"
   },
   {
     "revision": "e9060d21ca071fe8c58a",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/baseball-simulator/static/js/2.7903ed9b.chunk.js"
   },
   {
-    "revision": "a086a9d10889e14e6a5760ff467f8783",
+    "revision": "71135afb4b68ddeaba07bfe88e18abb4",
     "url": "/baseball-simulator/index.html"
   }
 ];
