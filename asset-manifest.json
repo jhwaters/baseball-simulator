@@ -1,13 +1,13 @@
 {
-  "main.css": "/baseball-simulator/static/css/main.285b2a10.chunk.css",
-  "main.js": "/baseball-simulator/static/js/main.742c7c30.chunk.js",
-  "main.js.map": "/baseball-simulator/static/js/main.742c7c30.chunk.js.map",
+  "main.css": "/baseball-simulator/static/css/main.05d7d8fe.chunk.css",
+  "main.js": "/baseball-simulator/static/js/main.da2b89de.chunk.js",
+  "main.js.map": "/baseball-simulator/static/js/main.da2b89de.chunk.js.map",
   "runtime~main.js": "/baseball-simulator/static/js/runtime~main.07d0cb16.js",
   "runtime~main.js.map": "/baseball-simulator/static/js/runtime~main.07d0cb16.js.map",
-  "static/js/2.7903ed9b.chunk.js": "/baseball-simulator/static/js/2.7903ed9b.chunk.js",
-  "static/js/2.7903ed9b.chunk.js.map": "/baseball-simulator/static/js/2.7903ed9b.chunk.js.map",
+  "static/js/2.20543830.chunk.js": "/baseball-simulator/static/js/2.20543830.chunk.js",
+  "static/js/2.20543830.chunk.js.map": "/baseball-simulator/static/js/2.20543830.chunk.js.map",
   "index.html": "/baseball-simulator/index.html",
-  "precache-manifest.3bd322e24604363f83ae250a3c0f1e3f.js": "/baseball-simulator/precache-manifest.3bd322e24604363f83ae250a3c0f1e3f.js",
+  "precache-manifest.4673f6e752c83c12e51965719fe72fe4.js": "/baseball-simulator/precache-manifest.4673f6e752c83c12e51965719fe72fe4.js",
   "service-worker.js": "/baseball-simulator/service-worker.js",
-  "static/css/main.285b2a10.chunk.css.map": "/baseball-simulator/static/css/main.285b2a10.chunk.css.map"
+  "static/css/main.05d7d8fe.chunk.css.map": "/baseball-simulator/static/css/main.05d7d8fe.chunk.css.map"
 }
