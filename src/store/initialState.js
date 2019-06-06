@@ -26,16 +26,16 @@ const options = {
   firstToThirdOnSingle: false,
 }
 const weights = {
-  SINGLE: 3,
+  SINGLE: 6,
   DOUBLE: 1,
-  TRIPLE: 1,
+  TRIPLE: 2,
   HOME_RUN: 1,
-  BASE_ON_BALLS: 1,
-  BASE_ON_ERROR: 1,
-  STRIKE_OUT: 4,
-  OUT_AT_FIRST: 4,
-  FOUL_OUT: 1,
-  FLY_OUT: 3,
+  BASE_ON_BALLS: 2,
+  BASE_ON_ERROR: 2,
+  STRIKE_OUT: 7,
+  OUT_AT_FIRST: 7,
+  FOUL_OUT: 2,
+  FLY_OUT: 5,
   DOUBLE_PLAY: 1,
 }
 const weightedArray = buildWeightedArray(weights)

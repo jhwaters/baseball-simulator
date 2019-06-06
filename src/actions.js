@@ -65,3 +65,17 @@ export const lockState = () => ({
 export const unlockState = () => ({
   type: UNLOCK_STATE
 })
+
+export const gameActionList = [
+  SINGLE,
+  DOUBLE,
+  TRIPLE,
+  HOME_RUN,
+  BASE_ON_BALLS,
+  BASE_ON_ERROR,
+  STRIKE_OUT,
+  OUT_AT_FIRST,
+  FOUL_OUT,
+  FLY_OUT,
+  DOUBLE_PLAY,
+]

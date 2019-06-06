@@ -19,7 +19,6 @@
   grid-area: controls;
   display: flex;
   justify-content: flex-start;
-  flex-basis: 1fr;
 }
 .simulation {
   grid-area: simulation;

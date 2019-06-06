@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateWeights } from '../actions';
+import { updateWeights, gameActionList } from '../actions';
 import round from 'lodash/round'
 
 class Weights extends React.Component {
@@ -13,6 +13,9 @@ class Weights extends React.Component {
     for (const k in this.props.weights) {
       total += +this.props.weights[k]
     }
+    const actions = [
+
+    ]
     return (
       <div className="Weights">
         <table>
@@ -22,7 +25,7 @@ class Weights extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(this.props.weights).map(k => {
+            {gameActionList.map(k => {
               return (
                 <tr key={k}>
                   <td>{k}</td>

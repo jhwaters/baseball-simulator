@@ -155,7 +155,7 @@ class GameSimulator extends React.Component {
                 value={this.state.simMode}
                 onChange={this.setSimMode}
               >
-                <option value="batter">Plate Appearance</option>
+                <option value="batter">Batter</option>
                 <option value="inning">Half Inning</option>
                 <option value="game">Game</option>
                 <option value="eternity">Forever</option>
